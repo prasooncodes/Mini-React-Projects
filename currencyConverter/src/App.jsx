@@ -11,7 +11,7 @@ function App() {
   const [convertedAmount, setConvertedAmount] = useState(0)
 
 
-  const currencyInfo = useCurrencyInfo(from)
+  const currencyInfo = useCurrencyInfo(from) || {}
 
   const options = Object.keys(currencyInfo)
 
@@ -23,14 +23,16 @@ function App() {
   }
 
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to])
+    if(currencyInfo[to]) {
+      setConvertedAmount(amount * currencyInfo[to])
+    }
   }
 
   return (
         <div
             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
             style={{
-                backgroundImage: `url('https://www.shutterstock.com/image-photo/crystal-globe-on-many-currency-600nw-2331383645.jpg')`,
+                backgroundImage: `url('https://borgenproject.org/wp-content/uploads/What-is-a-Developing-Country-1-1030x650.jpg')`,
             }}
         >
             <div className="w-full">
@@ -47,8 +49,11 @@ function App() {
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setAmount(amount)}
+                                onCurrencyChange={(currency) => setFrom(currency)}
                                 selectCurrency={from}
+                                onAmountChange={(value) => setAmount(value)}
+                                amountDisable={false}
+                                currencyDisable={false}
                             />
                         </div>
                         <div className="relative w-full h-0.5">
@@ -67,7 +72,7 @@ function App() {
                                 label="To"
                                 amount={convertedAmount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setConvertedAmount(convertedAmount)}
+                                onCurrencyChange={(currency) => setTo(currency)}
                                 selectCurrency={to}
                                 amountDisable={true}
                             />
