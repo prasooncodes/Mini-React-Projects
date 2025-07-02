@@ -1,3 +1,7 @@
+/*
+  The following directives require Tailwind CSS and PostCSS.
+  Make sure your project is set up with Tailwind and PostCSS.
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
