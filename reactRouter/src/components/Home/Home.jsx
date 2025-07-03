@@ -14,7 +14,7 @@ function Home() {
                         <img
                             src={Remote1}
                             alt="Remote Control Animation 1"
-                            className="rounded-lg w-2/3 max-w-xs sm:w-2/3 sm:max-w-sm"
+                            className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-[800px] h-auto rounded-lg mx-auto"
                             loading="lazy"
                         />
                     </div>
