@@ -1,4 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import Remote1 from '../../assets/Remote1.gif';
+import Remote2 from '../../assets/Remote2.gif';
 
 function Home() {
     return (
@@ -31,12 +34,19 @@ function Home() {
                 </div>
 
                 <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-                    <img className="w-96" src="https://i.ibb.co/5BCcDYB/Remote2.png" alt="image1" />
+                    <img src={Remote1} 
+                         alt="Remote Control Animation 1" 
+                         className="rounded-lg"
+                         loading="lazy"   
+                    />
                 </div>
             </aside>
 
             <div className="grid  place-items-center sm:mt-20">
-                <img className="sm:w-96 w-48" src="https://i.ibb.co/2M7rtLk/Remote1.png" alt="image2" />
+                <img src={Remote2} 
+                     alt="Remote Control Animation 2" 
+                     className="rounded-lg"
+                     loading="lazy" />
             </div>
 
             <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">Lorem Ipsum Yojo</h1>
