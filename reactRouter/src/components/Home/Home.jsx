@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Remote1 from '../../assets//images/Remote1.gif';
+import overwaterVillas from '../../assets/images/overwater-villas.jpg';
 import Remote2 from '../../assets/images/Remote2.gif';
-// Ensure that '../../assets/Remote1.gif' and '../../assets/Remote2.gif' exist and are correctly named.
+
 
 function Home() {
     return (
@@ -12,18 +12,22 @@ function Home() {
                     {/* Remote1 image on the left */}
                     <div className="w-full sm:w-1/2 flex justify-center sm:justify-start mb-8 sm:mb-0">
                         <img
-                            src={Remote1}
+                            src={overwaterVillas}
                             alt="Remote Control Animation 1"
-                            className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-[800px] h-auto rounded-lg mx-auto"
+                            className="w-full sm:w-full md:w-5/6 lg:w-4/5 xl:w-[1000px] h-auto rounded-lg mx-auto" 
                             loading="lazy"
                         />
                     </div>
                     {/* Text and button on the right */}
                     <div className="w-full sm:w-1/2 max-w-xl space-y-8 text-center sm:text-right sm:ml-auto">
-                        <h2 className="text-4xl font-bold sm:text-5xl">
-                            Download Now
-                            <span className="hidden sm:block text-4xl">Lorem Ipsum</span>
+                        <h2 className="text-4xl font-extrabold sm:text-5xl leading-tight tracking-wide text-orange-800">
+                            Welcome to PalmShade Inn
+                            <span className="hidden sm:block text-3xl font-medium text-gray-700 mt-4">
+                                Your perfect escape to sun-kissed beaches and serene luxury
+                            </span>
                         </h2>
+
+
 
                         <Link
                             className="inline-flex text-white items-center px-6 py-3 font-medium bg-orange-700 rounded-lg hover:opacity-75"
