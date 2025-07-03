@@ -1,14 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Remote1 from '../../assets/Remote1.gif';
-import Remote2 from '../../assets/Remote2.gif';
+import Remote1 from '../../assets//images/Remote1.gif';
+import Remote2 from '../../assets/images/Remote2.gif';
+// Ensure that '../../assets/Remote1.gif' and '../../assets/Remote2.gif' exist and are correctly named.
 
 function Home() {
     return (
         <div className="mx-auto w-full max-w-7xl">
             <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
-                <div className="relative z-10 max-w-screen-xl px-4  pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
-                    <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
+                <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center">
+                    {/* Remote1 image on the left */}
+                    <div className="w-full sm:w-1/2 flex justify-center sm:justify-start mb-8 sm:mb-0">
+                        <img
+                            src={Remote1}
+                            alt="Remote Control Animation 1"
+                            className="rounded-lg w-2/3 max-w-xs sm:w-2/3 sm:max-w-sm"
+                            loading="lazy"
+                        />
+                    </div>
+                    {/* Text and button on the right */}
+                    <div className="w-full sm:w-1/2 max-w-xl space-y-8 text-center sm:text-right sm:ml-auto">
                         <h2 className="text-4xl font-bold sm:text-5xl">
                             Download Now
                             <span className="hidden sm:block text-4xl">Lorem Ipsum</span>
@@ -19,7 +30,6 @@ function Home() {
                             to="/"
                         >
                             <svg
-                                fill="white"
                                 width="24"
                                 height="24"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -32,19 +42,11 @@ function Home() {
                         </Link>
                     </div>
                 </div>
-
-                <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-                    <img src={Remote1} 
-                         alt="Remote Control Animation 1" 
-                         className="rounded-lg"
-                         loading="lazy"   
-                    />
-                </div>
             </aside>
 
-            <div className="grid  place-items-center sm:mt-20">
-                <img src={Remote2} 
-                     alt="Remote Control Animation 2" 
+            <div className="grid place-items-center sm:mt-20">
+                <img src={Remote2}
+                     alt="Remote Control Animation 2"
                      className="rounded-lg"
                      loading="lazy" />
             </div>
