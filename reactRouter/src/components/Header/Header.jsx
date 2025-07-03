@@ -1,44 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Logo from '../../assets/images/logo.png'; 
-
+import Logo from '../../assets/images/logo.png';
+import { ChevronDown } from 'lucide-react';
 
 function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
     return (
-        <header className="shadow sticky z-50 top-0">
-            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <Link to="/" className="flex items-center">
-                        <img
-                            src={Logo}
-                            className="mr-3 h-20"
-                            alt="Logo"
-                        />
+        <header className="shadow-md sticky top-0 z-50 bg-white">
+            <nav className="px-4 lg:px-10 py-4 border-b border-gray-200">
+                <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
+                    {/* Logo */}
+                    <Link to="/" className="flex items-center space-x-3">
+                        <img src={Logo} className="h-16 sm:h-20" alt="PalmShade Inn Logo" />
+                        <span className="self-center text-xl font-bold text-green-900 hidden sm:inline">
+                            PalmShade Inn
+                        </span>
                     </Link>
-                    <div className="flex items-center lg:order-2">
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="lg:hidden text-green-900 focus:outline-none"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                    </button>
+
+                    {/* CTA Buttons */}
+                    <div className="hidden lg:flex items-center space-x-4 lg:order-2">
                         <Link
                             to="#"
-                            className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            className="text-green-900 hover:bg-green-100 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none transition"
                         >
                             Log in
                         </Link>
                         <Link
                             to="#"
-                            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none transition"
                         >
-                            Get started
+                            Get Started
                         </Link>
                     </div>
+
+                    {/* Navigation Links */}
                     <div
-                        className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-                        id="mobile-menu-2"
+                        className={`${
+                          menuOpen ? 'block' : 'hidden'
+                        } w-full lg:flex lg:items-center lg:space-x-8 lg:order-1 lg:w-auto mt-4 lg:mt-0`}
                     >
-                        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                        <ul className="flex flex-col lg:flex-row text-base font-medium w-full space-y-2 lg:space-y-0">
                             <li>
                                 <NavLink
                                     to="/"
-                                    className={({isActive}) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-900"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0`
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 transition-colors duration-200 ${isActive ? 'text-green-700' : 'text-gray-700'} hover:text-green-800`
                                     }
                                 >
                                     Home
@@ -47,8 +70,8 @@ function Header() {
                             <li>
                                 <NavLink
                                     to="/about"
-                                    className={({isActive}) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-900"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0`
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 transition-colors duration-200 ${isActive ? 'text-green-700' : 'text-gray-700'} hover:text-green-800`
                                     }
                                 >
                                     About
@@ -57,15 +80,28 @@ function Header() {
                             <li>
                                 <NavLink
                                     to="/contact"
-                                    className={({isActive}) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-700" : "text-gray-900"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0`
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 transition-colors duration-200 ${isActive ? 'text-green-700' : 'text-gray-700'} hover:text-green-800`
                                     }
                                 >
                                     Contact
                                 </NavLink>
                             </li>
-                            
-                            
+                            <li className="relative">
+                                <button
+                                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                                    className="flex items-center py-2 pr-4 pl-3 text-gray-700 hover:text-green-800 transition-colors"
+                                >
+                                    Rooms <ChevronDown className="ml-1 h-4 w-4" />
+                                </button>
+                                {dropdownOpen && (
+                                    <div className="absolute bg-white shadow-md rounded-md py-2 mt-2 w-40">
+                                        <Link to="/rooms/deluxe" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Deluxe Room</Link>
+                                        <Link to="/rooms/ocean-view" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Ocean View</Link>
+                                        <Link to="/rooms/family-suite" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100">Family Suite</Link>
+                                    </div>
+                                )}
+                            </li>
                         </ul>
                     </div>
                 </div>
