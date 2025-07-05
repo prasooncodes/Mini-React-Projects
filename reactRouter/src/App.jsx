@@ -8,6 +8,8 @@ import Footer from './components/Footer/Footer'
 import Home from './components/Home/Home'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
+import User from './components/User/User'
+import Amenities from './components/Amenities/Amenities'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +22,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user/:id" element={<User />} />
+        <Route path="/amenities" element={<Amenities />} />
       </Routes>
       <Footer />
     </BrowserRouter>

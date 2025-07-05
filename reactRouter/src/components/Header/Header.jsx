@@ -102,6 +102,17 @@ function Header() {
                                     </div>
                                 )}
                             </li>
+
+                            <li>
+                                <NavLink
+                                    to="/amenities"
+                                    className={({ isActive }) =>
+                                        `block py-2 pr-4 pl-3 transition-colors duration-200 ${isActive ? 'text-orange-300' : 'text-green-100'} hover:text-orange-300`
+                                    }
+                                >
+                                    Amenities
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
